@@ -16,7 +16,7 @@ public class EsgDetailLastModifiedModel {
 	public EsgDetailLastModifiedModel() {
 		super();
 	}
-//
+
 
 	public EsgDetailLastModifiedModel(String txtorganizationmodifieddate, String txtactivitiesmodifieddate,
 			String txtheadquartersmodifieddate, String txtoperationsmodifieddate) {
@@ -58,11 +58,5 @@ public class EsgDetailLastModifiedModel {
 	public void setTxtoperationsmodifieddate(String txtoperationsmodifieddate) {
 		this.txtoperationsmodifieddate = txtoperationsmodifieddate;
 	}
-	
-	
-	
 
-	
-	
-	
 }

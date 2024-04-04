@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.esgreport.entity.User;
 import com.esgreport.repository.UserRepository;
-import com.esgreport.service.UserDetailsImpl;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{

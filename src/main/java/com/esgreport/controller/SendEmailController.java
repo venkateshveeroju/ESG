@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.esgreport.SendingEmailApplication;
+import com.esgreport.service.EmailService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -18,12 +18,12 @@ import com.esgreport.SendingEmailApplication;
 public class SendEmailController {
 	
 	@Autowired
-	SendingEmailApplication sendingEmailApplication;
+	EmailService emailService;
 
 	@RequestMapping(value = "/sendemail")
 	public String send() throws AddressException, MessagingException, IOException {
-		//sendingEmailApplication.sendEmail(null, null, null);
-		//sendingEmailApplication.sendEmailWithAttachment();
+		//emailService.sendEmail("testveertestveer@gmail.com", "Testing from Spring Boot", "Hello World \n Spring Boot Email");
+		emailService.sendEmailWithAttachment("testveertestveer@gmail.com", "Testing from Spring Boot", "Hello World \n Spring Boot Email");
 	   return "Email sent successfully";   
 	}
 }

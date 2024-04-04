@@ -2,14 +2,11 @@ package com.esgreport.entity;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -34,6 +29,21 @@ public class EsgDetail {
 	@Column(length = 6000)
 	private String esgDetailText;
 	
+	@Column(length = 12000)
+	private String text;
+	
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Bank getBank() {
+		return bank;
+	}
+
 	@Column(length = 6000)
 	private String esgDetailTextValue;
 

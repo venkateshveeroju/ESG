@@ -9,6 +9,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "banks")
 public class Bank {
@@ -33,7 +35,7 @@ public class Bank {
 		this.bankName = bankName;
 		this.logoPath = logoPath;
 	}
-
+	@JsonIgnore
 	public Long getId() {
 		return id;
 	}

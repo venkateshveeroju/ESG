@@ -46,8 +46,6 @@ public class AuthController {
 
 	@Autowired
 	RoleRepository roleRepository;
-	
-	
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -57,7 +55,7 @@ public class AuthController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-		System.out.println("signin mehode here");
+	
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 

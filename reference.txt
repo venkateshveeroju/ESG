@@ -26,7 +26,7 @@ INSERT users (email,password,username,bank_id) VALUES ('abc@abcbank.com','','exa
 INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO roles(name) VALUES('ROLE_USER');
 
-
+INSERT INTO user_role(user_id,role_id) VALUES(1,1);
 
 
 INSERT INTO esgdetail_moderator_status(status) VALUES('SELECT');
@@ -43,10 +43,6 @@ INSERT INTO esgdetails(esg_detail_text) values ('txtorganization');
 INSERT INTO esgdetails(esg_detail_text) values ('txtactivities');
 INSERT INTO esgdetails(esg_detail_text) values ('txtheadquarters');
 INSERT INTO esgdetails(esg_detail_text) values ('txtoperations');
-INSERT INTO user_role(user_id,role_id) VALUES(1,1);
-
-
-
 
 select * from banks;
 select * from users;

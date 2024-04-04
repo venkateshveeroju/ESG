@@ -4,7 +4,7 @@
 
     <field name="id" class="java.lang.Long">
     </field>
-    <field name="esgDetailText" class="java.lang.String">
+    <field name="text" class="java.lang.String">
     </field>
     <field name="esgDetailTextValue" class="java.lang.String">
     </field>
@@ -28,8 +28,9 @@
                     <textElement textAlignment="Right">
                         <font size="14" isBold="false"/>
                     </textElement>
-                    <text><![CDATA[ESG Report]]></text>
+                    <text><![CDATA[Capgemini Invent Report]]></text>
                 </staticText>
+                
             </frame>
         </band>
     </title>
@@ -57,17 +58,17 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Esg Text name]]></text>
+                <text><![CDATA[ESG Title]]></text>
             </staticText>
            
-              <staticText>
+              <staticText >
                 <reportElement mode="Opaque" x="211" y="0" width="211" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e9b64414-ad92-4257-a8f2-63a23c460255">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="372fc4a5-58e8-4f68-9b0b-b8c92b4521d4"/>
                 </reportElement>
-                <textElement textAlignment="Center">
+                <textElement textAlignment="Center" >
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[EsgDetail text]]></text>
+                <text><![CDATA[ESG Information]]></text>
             </staticText>
         </band>
     </columnHeader>
@@ -92,11 +93,11 @@
                 <textElement textAlignment="Center">
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{esgDetailText}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{text}]]></textFieldExpression>
             </textField>
           
           <textField isStretchWithOverflow="true">
-                <reportElement x="211" y="0" width="111" height="20" uuid="b9c4d404-6ffe-47b5-aeaf-ee9ffb804c6a">
+                <reportElement x="311" y="0" width="111" height="20" uuid="b9c4d404-6ffe-47b5-aeaf-ee9ffb804c6a">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="372fc4a5-58e8-4f68-9b0b-b8c92b4521d4"/>
                 </reportElement>
                 <textElement textAlignment="Center">

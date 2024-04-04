@@ -173,27 +173,7 @@ public class EsgDetailService {
 				.updateDelegate(esgDetailsDelegateUserModel.getTxtheadquartersdelegateuser(), "txtheadquarters");
 		int responsetxtoperations = esgDetailRepository
 				.updateDelegate(esgDetailsDelegateUserModel.getTxtoperationsdelegateuser(), "txtoperations");
-		/*
-		 * for (EsgDetail esgDetailTemp : esgDetailList) { try {
-		 * if(esgDetailTemp.getEsgDetailText().equals("txtorganization")) { long id =
-		 * esgDetailsDelegateUserModel.getTxtorganizationdelegateuser();
-		 * esgDetailTemp.setDelegateTo(userrepository.getOne(id));
-		 * esgDetailRepository.saveAndFlush(esgDetailTemp); }
-		 * if(esgDetailTemp.getEsgDetailText().equals("txtactivities")) { long id =
-		 * esgDetailsDelegateUserModel.getTxtactivitiesdelegateuser();
-		 * esgDetailTemp.setDelegateTo(userrepository.getOne(id));
-		 * esgDetailRepository.saveAndFlush(esgDetailTemp); } if
-		 * (esgDetailTemp.getEsgDetailText().equals("txtheadquarters")) { long id =
-		 * esgDetailsDelegateUserModel.getTxtheadquartersdelegateuser();
-		 * esgDetailTemp.setDelegateTo(userrepository.getOne(id));
-		 * esgDetailRepository.saveAndFlush(esgDetailTemp); } if
-		 * (esgDetailTemp.getEsgDetailText().equals("txtoperations")) { long id =
-		 * esgDetailsDelegateUserModel.getTxtoperationsdelegateuser();
-		 * esgDetailTemp.setDelegateTo(userrepository.getOne(id));
-		 * esgDetailRepository.saveAndFlush(esgDetailTemp); } return true; }
-		 * 
-		 * catch (Exception e) { return false; } }
-		 */
+		
 
 		if (response > 0 && txtactivities > 0 && txtheadquarters > 0 && responsetxtoperations > 0) {
 			return true;
@@ -201,23 +181,24 @@ public class EsgDetailService {
 			return false;
 		}
 	}
-    public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
-        String path = "D:\\j\\";
+    public boolean exportReport(String reportFormat) throws FileNotFoundException, JRException {
+        String path = "C:\\temp\\";
         List<EsgDetail> esgDetail = esgDetailRepository.findAll();
         //load file and compile it
         File file = ResourceUtils.getFile("classpath:esgdetails.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(esgDetail);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(esgDetail,false);
         Map<String, Object> parameters = new HashMap<>();
         
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         if (reportFormat.equalsIgnoreCase("html")) {
-            JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\esg.html");
+            JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\ESG Report.html");
         }
         if (reportFormat.equalsIgnoreCase("pdf")) {
-            JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\esg.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\ESG Report.pdf");
         }
 
-        return "report generated in path : " + path;
+       // return "report generated in path : " + path;
+        return true;
     }
 }

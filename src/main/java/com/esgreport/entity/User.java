@@ -34,9 +34,7 @@ public class User {
 	private String verificationCode;
 
 	private boolean enabled;
-	
-	
-/////
+
 	@NotBlank
 	@Size(min = 3, max = 50)
 	private String username;
@@ -67,13 +65,7 @@ public class User {
 		this.bank = bank;
 	}
 
-//	public List<EsgDetail> getEsgDetails() {
-//		return esgDetails;
-//	}
-//
-//	public void setEsgDetails(List<EsgDetail> esgDetails) {
-//		this.esgDetails = esgDetails;
-//	}
+
 	public String getVerificationCode() {
 		return verificationCode;
 	}

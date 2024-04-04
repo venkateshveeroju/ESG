@@ -15,21 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esgreport.GeneratePdf;
-import com.esgreport.SendingEmailApplication;
+import com.esgreport.service.EmailService;
 import com.esgreport.entity.EsgDetail;
-import com.esgreport.entity.User;
 import com.esgreport.model.EsgDetailsData;
 import com.esgreport.model.EsgDetailsDelegateUserModel;
 import com.esgreport.service.EsgDetailService;
 
 import net.sf.jasperreports.engine.JRException;
 
+import javax.mail.MessagingException;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/esgdetails")
 public class EsgDetailsController {
 	@Autowired
-	private SendingEmailApplication sendingEmailApplication;
+	private EmailService sendingEmailApplication;
 	@Autowired
 	private EsgDetailService esgDetailService;
 	@Autowired
@@ -48,7 +49,7 @@ public class EsgDetailsController {
 
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String esgDetailsSave(@RequestBody EsgDetailsData esgdetailsdata) throws ParseException {
-
+		System.out.println("esgdetailsdata.toString()");
 		try {
 			esgDetailService.save(esgdetailsdata);
 
@@ -102,14 +103,16 @@ public class EsgDetailsController {
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
 		}
 
 		return true;
 	}
 	
 	@GetMapping("/report/{format}")
-    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
-     System.out.println("@GetMapping@GetMapping@GetMapping@GetMapping");  
+    public boolean generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+    
 	 return esgDetailService.exportReport(format);
     }
 }

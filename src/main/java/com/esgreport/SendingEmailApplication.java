@@ -27,11 +27,12 @@ public class SendingEmailApplication {
 	public void sendEmail(String email,String subject,String message) {
 
 		SimpleMailMessage msg = new SimpleMailMessage();
-//		msg.setTo("testveertestveer@gmail.com");
+	//	msg.setTo("testveertestveer@gmail.com");
 //		msg.setSubject("Testing from Spring Boot");
 //		msg.setText("Hello World \n Spring Boot Email");
 		
 		msg.setTo(email);
+
 		msg.setSubject(subject);
 		msg.setText(message);
 

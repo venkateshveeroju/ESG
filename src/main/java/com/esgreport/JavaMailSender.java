@@ -1,20 +1,27 @@
 package com.esgreport;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import javassist.Loader;
+import org.springframework.stereotype.Service;
+
+@Configuration
 public class JavaMailSender  {
 	@Bean
 	public JavaMailSenderImpl getJavaMailSender() {
 	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	    InputStream inputStream = Loader.getSystemResourceAsStream("/application.properties");
 	    mailSender.setHost("smtp.gmail.com");
 	    mailSender.setPort(587);
 	    
-	    mailSender.setUsername("my.gmail@gmail.com");
-	    mailSender.setPassword("password");
+	    mailSender.setUsername("testveertestveer@gmail.com");
+	    mailSender.setPassword("zhnp kade pldc owcm");
 	    
 	    Properties props = mailSender.getJavaMailProperties();
 	    props.put("mail.transport.protocol", "smtp");
